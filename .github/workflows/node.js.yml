@@ -37,4 +37,4 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
           name: code-coverage-report
-          path: catalog-api/output/test/code-coverage.html
+          path: ./code-coverage.html
