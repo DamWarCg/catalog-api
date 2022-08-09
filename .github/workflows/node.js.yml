@@ -33,4 +33,3 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
           name: code-coverage-report
-          path: spec/code-coverage.html
