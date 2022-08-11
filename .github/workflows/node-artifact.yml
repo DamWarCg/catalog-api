@@ -36,3 +36,5 @@ jobs:
             path: |
               .
               !./spec/
+              !./README.md
+              !./.github/workflows
