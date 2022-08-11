@@ -23,8 +23,9 @@ steps:
 - task: PublishPipelineArtifact@1
   inputs:
     targetPath: '|
-              .
-              !./spec/
-              !./README.md
-              !./.github/workflows'
+    $(Pipeline.Workspace)
+    ! $(Pipeline.Workspace)/specs/
+    ! $(Pipeline.Workspace)/README.md
+    ! $(Pipeline.Workspace)/.github/workflows'
+
     publishLocation: 'pipeline'
