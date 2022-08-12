@@ -16,9 +16,18 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
-    npm install
+    npm ci
+    npm install jasmine-trx-reporter
     npm run build --if-present
-  displayName: 'npm install and build'
+    npm run test
+  displayName: 'npm cli'
+
+- task: PublishTestResults@2
+  inputs:
+    testResultsFormat: 'VSTest'
+    testResultsFiles: 'test_results/*.trx'
+    searchFolder: '$(Pipeline.Workspace)'
+    testRunTitle: 'Tests'
 
 - task: DeleteFiles@1
   inputs:
