@@ -37,7 +37,9 @@ jobs:
       with:
             name: catalog-api-artifact
             path: |
-              .
-              !./spec/
-              !./README.md
-              !./.github/workflows
+              bin/
+              routes/
+              node_modules/
+              app.js
+              package.json
+              package-lock.json
