@@ -14,5 +14,6 @@
   },
   "devDependencies": {
     "jasmine": "^4.3.0"
+    "jasmine-trx-reporter": "^2.3.0"
   }
 }
