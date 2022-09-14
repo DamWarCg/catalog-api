@@ -12,10 +12,11 @@ pool:
 steps:
 - task: NodeTool@0
   inputs:
-    versionSpec: '10.x'
+    versionSpec: '16.x'
   displayName: 'Install Node.js'
 
 - script: |
+    pwd
     npm i --only=production
     mkdir _output
     cp -t _output -r bin routes node_modules app.js package.json package-lock.json
@@ -26,12 +27,12 @@ steps:
 - task: PublishTestResults@2
   inputs:
     testResultsFormat: 'VSTest'
-    testResultsFiles: '$(Pipeline.Workspace)/test_results'
-    searchFolder: '$(Pipeline.Workspace)'
+    testResultsFiles: 'test_results/'
+    searchFolder: './'
     testRunTitle: 'Tests'
     
 - task: PublishPipelineArtifact@1
   inputs:
-    targetPath: '$(Pipeline.Workspace)/_output'
+    targetPath: '_output/'
     artifact: 'production-artifact'
     publishLocation: 'pipeline'
