@@ -16,28 +16,22 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
-    npm ci
-    npm install jasmine-trx-reporter
-    npm run build --if-present
+    npm i --only=production
+    mkdir _output
+    cp -t _output -r bin routes node_modules app.js package.json package-lock.json
+    npm i
     npm run test
   displayName: 'npm cli'
 
 - task: PublishTestResults@2
   inputs:
     testResultsFormat: 'VSTest'
-    testResultsFiles: '**/*.trx'
+    testResultsFiles: '$(Pipeline.Workspace)/test_results'
     searchFolder: '$(Pipeline.Workspace)'
     testRunTitle: 'Tests'
-
-- task: DeleteFiles@1
-  inputs:
-    SourceFolder: '$(Pipeline.Workspace)'
-    Contents: |
-      /spec/
-      /README.md
-      /.github/workflows
-
+    
 - task: PublishPipelineArtifact@1
   inputs:
-    targetPath: '$(Pipeline.Workspace)'
+    targetPath: '$(Pipeline.Workspace)/_output'
+    artifact: 'production-artifact'
     publishLocation: 'pipeline'
