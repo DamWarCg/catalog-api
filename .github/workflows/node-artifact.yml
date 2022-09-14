@@ -24,16 +24,16 @@ jobs:
         cache: 'npm'
     
     - name: Install production dependencies
-    - run: npm i --only=production
+      run: npm i --only=production
     - name: Copy production files to a separate folder
-    - run:  |
+      run:  |
             mkdir _output
             cp -t _output -r bin routes node_modules app.js package.json package-lock.json
     
     - name: Install dev dependencies
-    - run: npm i
+      run: npm i
     - name: Test
-    - run: npm run test
+      run: npm run test
     
     - name: Export test resuts
       uses: actions/upload-artifact@v3
