@@ -22,12 +22,13 @@ steps:
     cp -t _output -r bin routes node_modules app.js package.json package-lock.json
     npm i
     npm run test
+    ls -l
   displayName: 'npm cli'
 
 - task: PublishTestResults@2
   inputs:
     testResultsFormat: 'VSTest'
-    testResultsFiles: 'test_results/'
+    testResultsFiles: 'test_results/*'
     searchFolder: './'
     testRunTitle: 'Tests'
     
