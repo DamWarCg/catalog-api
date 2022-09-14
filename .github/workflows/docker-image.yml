@@ -13,6 +13,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+        - uses: actions/checkout@v3
+        - name: Install production dependencies
+          run: npm i --only=production
+        - name: Copy production files to a separate folder
+          run:  |
+                mkdir _output
+                cp -t _output -r bin routes node_modules app.js package.json package-lock.json
+                
         - name: Set up QEMU
           uses: docker/setup-qemu-action@v2
         - name: Set up Docker Buildx
