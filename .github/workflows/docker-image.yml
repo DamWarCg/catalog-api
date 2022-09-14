@@ -39,5 +39,5 @@ jobs:
           run:  |
                 pwd
                 ls -l
-                docker build -t damwar/booking-api:latest .
-                docker push damwar/booking-api:latest
+                docker build -t damwar/catalog-api:latest .
+                docker push damwar/catalog-api:latest
