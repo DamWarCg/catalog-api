@@ -9,12 +9,11 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-steps:
-- task: NodeTool@0
-  inputs:
-    versionSpec: '16.x'
-  displayName: 'Install Node.js'
+container: 
+  image: damwarregistry.azurecr.io/sdks/node-sdk:latest
+  endpoint: acr-damwarregistry
 
+steps:
 - script: |
     pwd
     npm i --only=production
